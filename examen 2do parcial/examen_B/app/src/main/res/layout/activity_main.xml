@@ -6,7 +6,7 @@
 
     <TableRow>
         <Button
-            android:id="@+id/again"
+            android:id="@+id/bt_again"
             android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:text="@string/bt_again" />
@@ -14,6 +14,12 @@
             android:layout_span="2"
             android:text="@string/tx_again"
             android:textColor="@color/colorTitulo"
+            android:textAlignment="center"
+            android:textSize="30dp"/>
+        <TextView
+            android:id="@+id/total_pares"
+            android:text="@string/num_pares"
+            android:textColor="@color/colorNumerosPares"
             android:textAlignment="center"
             android:textSize="30dp"/>
     </TableRow>

@@ -1,52 +1,34 @@
 package castro.examen_b;
 
-import android.os.SystemClock;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Deque;
-import java.util.List;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11,card12,card13,card14,card15,card16,card17,card18,card19,card20,card21,card22,card23,card24;
+    Button btInicio, btAgain;
+    TextView txPares;
     Random rd = new Random();
     int[] presionados,c1, c2;
-    String[][] imagenes;
-    //int c1, c2;
-    List lista = Collections.synchronizedList(new ArrayList());
-    Deque<String> stack = new ArrayDeque<String>();
-    int touchs, puntos, pares, openCard;
+    int pares, openCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imagenes = new String[3][24];
-        presionados = new int[24];
-        puntos = 0;
-        pares = 0;
-        openCard = 0;
-        c1 = new int[2];
-        c2 = new int[2];
-        c1[0] = 0;
-        c2[0] = 0;
+        txPares = (TextView) findViewById(R.id.total_pares);
 
-        for (int a=0;a<24;a++){
-            int b = a;
-            presionados[a] = 3;
-            if(a == 13) b = a - 12;
-            lista.add(a,"img" + (b + 1));
-        }
+        btAgain = (Button) findViewById(R.id.bt_again);
+        btAgain.setOnClickListener(this);
 
         card1 = (ImageView) findViewById(R.id.btn1);
         card1.setOnClickListener(this);
@@ -119,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         card24 = (ImageView) findViewById(R.id.btn24);
         card24.setOnClickListener(this);
+        reset();
     }
 
     @Override
@@ -142,7 +125,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -166,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -190,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -214,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -238,7 +221,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -262,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -286,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -310,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -334,7 +317,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -358,7 +341,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -382,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -406,7 +389,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -430,7 +413,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -454,7 +437,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -478,7 +461,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -502,7 +485,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -526,7 +509,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -550,7 +533,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -574,7 +557,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -598,7 +581,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -622,7 +605,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -646,7 +629,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -670,7 +653,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -694,7 +677,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
                             if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
+                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
                                 t.show();
                             }
                         }
@@ -702,6 +685,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 System.out.println(" openCard24:"+openCard +" presionados:"+presionados[23]);
                 break;
+            case R.id.bt_again:
+                reset();
         }
     }
 
@@ -726,17 +711,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             c2[0] = 0;
             presionados[c1[1]] = 2;
             presionados[c2[1]] = 2;
-            if(pares == 16){
-                Toast t = Toast.makeText(getApplicationContext(),"¡Felicidades!",Toast.LENGTH_SHORT);
+            if(pares == 12){
+                Toast t = Toast.makeText(getApplicationContext(),"¡Felicidades!",Toast.LENGTH_LONG);
                 t.show();
             }
+            txPares.setText(String.valueOf(pares));
             return true;
         }
         else {
-            Toast t = Toast.makeText(getApplicationContext(),"Sigue intentando",Toast.LENGTH_SHORT);
+            Toast t = Toast.makeText(getApplicationContext(),"Sigue intentando",Toast.LENGTH_LONG);
             t.show();
-            voltear(c1[1]+1);
-            voltear(c2[1]+1);
+            Runnable r = new Runnable() {
+                @Override
+                public void run(){
+                    voltear(c1[1]+1);
+                    voltear(c2[1]+1);
+
+                }
+            };
+            Handler h = new Handler();
+            h.postDelayed(r, 1500);
             presionados[c1[1]] = 0;
             presionados[c2[1]] = 0;
             c1[0] = 0;
@@ -828,14 +822,66 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void randomImages(){
-        if(!lista.isEmpty()){
-            int size = lista.size();
-            for (int a=0; a<24; a++){
-                int n = rd.nextInt(size - 0) + size;
-                imagenes[0][a] = lista.get(n).toString();
-                lista.remove(n);
+        int cant=12;
+        int i=0;
+        int rang=10;
+        int vec[]= new int [cant];
+
+        vec[i]=(int) (Math.random()*rang);
+        for(i=1; i<cant; i++){
+            vec[i]=(int)(Math.random()*rang);
+            for(int j=1; j<i; j++){
+                if(vec[i]==vec[j]){
+                    i--;
+                }
             }
         }
+        System.out.println("        msg Numeros Random \n");
+        for(int a=0;a<cant;a++){
+            System.out.print(vec[a]+" / ");
+        }
+    }
 
+    public void reset(){
+        presionados = new int[24];
+        pares = 0;
+        openCard = 0;
+        c1 = new int[2];
+        c2 = new int[2];
+        c1[0] = 0;
+        c2[0] = 0;
+
+        for (int a=0;a<24;a++){
+            int b = a;
+            presionados[a] = 3;
+        }
+
+        //randomImages();
+        txPares.setText("0");
+
+        card1.setImageResource(R.drawable.imgdefault);
+        card2.setImageResource(R.drawable.imgdefault);
+        card3.setImageResource(R.drawable.imgdefault);
+        card4.setImageResource(R.drawable.imgdefault);
+        card5.setImageResource(R.drawable.imgdefault);
+        card6.setImageResource(R.drawable.imgdefault);
+        card7.setImageResource(R.drawable.imgdefault);
+        card8.setImageResource(R.drawable.imgdefault);
+        card9.setImageResource(R.drawable.imgdefault);
+        card10.setImageResource(R.drawable.imgdefault);
+        card11.setImageResource(R.drawable.imgdefault);
+        card12.setImageResource(R.drawable.imgdefault);
+        card13.setImageResource(R.drawable.imgdefault);
+        card14.setImageResource(R.drawable.imgdefault);
+        card15.setImageResource(R.drawable.imgdefault);
+        card16.setImageResource(R.drawable.imgdefault);
+        card17.setImageResource(R.drawable.imgdefault);
+        card18.setImageResource(R.drawable.imgdefault);
+        card19.setImageResource(R.drawable.imgdefault);
+        card20.setImageResource(R.drawable.imgdefault);
+        card21.setImageResource(R.drawable.imgdefault);
+        card22.setImageResource(R.drawable.imgdefault);
+        card23.setImageResource(R.drawable.imgdefault);
+        card24.setImageResource(R.drawable.imgdefault);
     }
 }
