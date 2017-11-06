@@ -9,16 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Random;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     ImageView card1,card2,card3,card4,card5,card6,card7,card8,card9,card10,card11,card12,card13,card14,card15,card16,card17,card18,card19,card20,card21,card22,card23,card24;
-    Button btInicio, btAgain;
+    Button btAgain;
     TextView txPares;
-    Random rd = new Random();
-    int[] presionados,c1, c2;
-    int pares, openCard;
+    int[] presionados,c1, c2, imagenesRandom;
+    int[][] imagenes;
+    int pares, openCard, id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,24 +113,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn1:
                 if(!flip()){    //podemos voltear carta, hay 1 o 0 cartas abiertas
                     if(presionados[0] == 1){ //esta volteada o abierta
-
                         System.out.println(" msg volteo carta 1 en dafult");
                         card1.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[0] = 0; //se cierra carta
                         if(openCard == 0) openCard = 0;
                         else openCard --;
-
                     }else if(presionados[0] == 3 || presionados[0] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 1");
-                        card1.setImageResource(R.drawable.img1);
+                        id = imagenes[imagenesRandom[0]][1];
+                        card1.setImageResource(imagenes[imagenesRandom[0]][0]);
                         presionados[0] = 1; //se abre carta
-                        setAuxCard(1,0);    //card img#, id_btn[#]
+                        setAuxCard(id,0);    //card img#, id_btn[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -143,15 +142,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[1] == 3 || presionados[1] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 2");
-                        card2.setImageResource(R.drawable.img1);
+                        id = imagenes[imagenesRandom[1]][1];
+                        card2.setImageResource(imagenes[imagenesRandom[1]][0]);
                         presionados[1] = 1; //se abre carta
-                        setAuxCard(1,1);    //card img#, id_btn[#]
+                        setAuxCard(id,1);    //card img#, id_btn[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -167,15 +164,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[2] == 3 || presionados[2] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 3");
-                        card3.setImageResource(R.drawable.img2);
+                        id = imagenes[imagenesRandom[2]][1];
+                        card3.setImageResource(imagenes[imagenesRandom[2]][0]);
                         presionados[2] = 1; //se abre carta
-                        setAuxCard(2,2); //card img#, id_btn[#]
+                        setAuxCard(id,2); //card img#, id_btn[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -191,15 +186,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[3] == 3 || presionados[3] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 4");
-                        card4.setImageResource(R.drawable.img2);
+                        id = imagenes[imagenesRandom[3]][1];
+                        card4.setImageResource(imagenes[imagenesRandom[3]][0]);
                         presionados[3] = 1; //se abre carta
-                        setAuxCard(2,3); //card img#, id_btn[#]
+                        setAuxCard(id,3); //card img#, id_btn[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -215,15 +208,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[4] == 3 || presionados[4] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 5");
-                        card5.setImageResource(R.drawable.img4);
+                        id = imagenes[imagenesRandom[4]][1];
+                        card5.setImageResource(imagenes[imagenesRandom[4]][0]);
                         presionados[4] = 1; //se abre carta
-                        setAuxCard(4,4); //card img#, id_btn[#]
+                        setAuxCard(id,4); //card img#, id_btn[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -239,15 +230,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[5] == 3 || presionados[5] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 6");
-                        card6.setImageResource(R.drawable.img5);
+                        id = imagenes[imagenesRandom[5]][1];
+                        card6.setImageResource(imagenes[imagenesRandom[5]][0]);
                         presionados[5] = 1; //se abre carta
-                        setAuxCard(5,5); //card img#, id_btn[#]
+                        setAuxCard(id,5); //card img#, id_btn[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -263,15 +252,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[6] == 3 || presionados[6] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 7");
-                        card7.setImageResource(R.drawable.img6);
+                        id = imagenes[imagenesRandom[6]][1];
+                        card7.setImageResource(imagenes[imagenesRandom[6]][0]);
                         presionados[6] = 1; //se abre carta
-                        setAuxCard(6,6); //card img#, presionados[#]
+                        setAuxCard(id,6); //card img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -287,15 +274,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[7] == 3 || presionados[7] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 8");
-                        card8.setImageResource(R.drawable.img7);
+                        id = imagenes[imagenesRandom[7]][1];
+                        card8.setImageResource(imagenes[imagenesRandom[7]][0]);
                         presionados[7] = 1; //se abre carta
-                        setAuxCard(7,7); //card img#, presionados[#]
+                        setAuxCard(id,7); //card img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -311,15 +296,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[8] == 3 || presionados[8] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 9");
-                        card9.setImageResource(R.drawable.img8);
+                        id = imagenes[imagenesRandom[8]][1];
+                        card9.setImageResource(imagenes[imagenesRandom[8]][0]);
                         presionados[8] = 1; //se abre carta
-                        setAuxCard(8,8); //card img#, presionados[#]
+                        setAuxCard(id,8); //card img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -335,15 +318,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[9] == 3 || presionados[9] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 10");
-                        card10.setImageResource(R.drawable.img3);
+                        id = imagenes[imagenesRandom[9]][1];
+                        card10.setImageResource(imagenes[imagenesRandom[9]][0]);
                         presionados[9] = 1; //se abre carta
-                        setAuxCard(3,9); //card img#, presionados[#]
+                        setAuxCard(id,9); //card img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -359,15 +340,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[10] == 3 || presionados[10] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 11");
-                        card11.setImageResource(R.drawable.img9);
+                        id = imagenes[imagenesRandom[10]][1];
+                        card11.setImageResource(imagenes[imagenesRandom[10]][0]);
                         presionados[10] = 1; //se abre carta
-                        setAuxCard(9,10); //card img#, presionados[#]
+                        setAuxCard(id,10); //card img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -383,15 +362,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[11] == 3 || presionados[11] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 12");
-                        card12.setImageResource(R.drawable.img10);
+                        id = imagenes[imagenesRandom[11]][1];
+                        card12.setImageResource(imagenes[imagenesRandom[11]][0]);
                         presionados[11] = 1; //se abre carta
-                        setAuxCard(10,11); //card img#, presionados[#]
+                        setAuxCard(id,11); //card img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -407,15 +384,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[12] == 3 || presionados[12] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 13");
-                        card13.setImageResource(R.drawable.img11);
+                        id = imagenes[imagenesRandom[12]][1];
+                        card13.setImageResource(imagenes[imagenesRandom[12]][0]);
                         presionados[12] = 1; //se abre carta
-                        setAuxCard(11,12);  //img#, presionados[#]
+                        setAuxCard(id,12);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -431,15 +406,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[13] == 3 || presionados[13] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 14");
-                        card14.setImageResource(R.drawable.img12);
+                        id = imagenes[imagenesRandom[13]][1];
+                        card14.setImageResource(imagenes[imagenesRandom[13]][0]);
                         presionados[13] = 1; //se abre carta
-                        setAuxCard(12,13);  //img#, presionados[#]
+                        setAuxCard(id,13);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -455,15 +428,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[14] == 3 || presionados[14] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 15");
-                        card15.setImageResource(R.drawable.img3);
+                        id = imagenes[imagenesRandom[14]][1];
+                        card15.setImageResource(imagenes[imagenesRandom[14]][0]);
                         presionados[14] = 1; //se abre carta
-                        setAuxCard(3,14);  //img#, presionados[#]
+                        setAuxCard(id,14);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -479,15 +450,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[15] == 3 || presionados[15] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 16");
-                        card16.setImageResource(R.drawable.img4);
+                        id = imagenes[imagenesRandom[15]][1];
+                        card16.setImageResource(imagenes[imagenesRandom[15]][0]);
                         presionados[15] = 1; //se abre carta
-                        setAuxCard(4,15);  //img#, presionados[#]
+                        setAuxCard(id,15);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -503,15 +472,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[16] == 3 || presionados[16] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 17");
-                        card17.setImageResource(R.drawable.img5);
+                        id = imagenes[imagenesRandom[16]][1];
+                        card17.setImageResource(imagenes[imagenesRandom[16]][0]);
                         presionados[16] = 1; //se abre carta
-                        setAuxCard(5,16);  //img#, presionados[#]
+                        setAuxCard(id,16);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -527,15 +494,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[17] == 3 || presionados[17] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 18");
-                        card18.setImageResource(R.drawable.img6);
+                        id = imagenes[imagenesRandom[17]][1];
+                        card18.setImageResource(imagenes[imagenesRandom[17]][0]);
                         presionados[17] = 1; //se abre carta
-                        setAuxCard(6,17);  //img#, presionados[#]
+                        setAuxCard(id,17);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -551,15 +516,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[18] == 3 || presionados[18] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 19");
-                        card19.setImageResource(R.drawable.img7);
+                        id = imagenes[imagenesRandom[18]][1];
+                        card19.setImageResource(imagenes[imagenesRandom[18]][0]);
                         presionados[18] = 1; //se abre carta
-                        setAuxCard(7,18);  //img#, presionados[#]
+                        setAuxCard(id,18);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -575,15 +538,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[19] == 3 || presionados[19] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 20");
-                        card20.setImageResource(R.drawable.img8);
+                        id = imagenes[imagenesRandom[19]][1];
+                        card20.setImageResource(imagenes[imagenesRandom[19]][0]);
                         presionados[19] = 1; //se abre carta
-                        setAuxCard(8,19);  //img#, presionados[#]
+                        setAuxCard(id,19);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -599,15 +560,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[20] == 3 || presionados[20] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 21");
-                        card21.setImageResource(R.drawable.img9);
+                        id = imagenes[imagenesRandom[20]][1];
+                        card21.setImageResource(imagenes[imagenesRandom[20]][0]);
                         presionados[20] = 1; //se abre carta
-                        setAuxCard(9,20);  //img#, presionados[#]
+                        setAuxCard(id,20);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -623,15 +582,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[21] == 3 || presionados[21] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 22");
-                        card22.setImageResource(R.drawable.img10);
+                        id = imagenes[imagenesRandom[21]][1];
+                        card22.setImageResource(imagenes[imagenesRandom[21]][0]);
                         presionados[21] = 1; //se abre carta
-                        setAuxCard(10,21);  //img#, presionados[#]
+                        setAuxCard(id,21);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -647,15 +604,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[22] == 3 || presionados[22] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 23");
-                        card23.setImageResource(R.drawable.img11);
+                        id = imagenes[imagenesRandom[22]][1];
+                        card23.setImageResource(imagenes[imagenesRandom[22]][0]);
                         presionados[22] = 1; //se abre carta
-                        setAuxCard(11,22);  //img#, presionados[#]
+                        setAuxCard(id,22);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -671,15 +626,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         else openCard --;
                     }else if(presionados[23] == 3 || presionados[23] == 0){ //se puede voltear carta, esta cerrada
                         System.out.println(" msg volteo carta 24");
-                        card24.setImageResource(R.drawable.img12);
+                        id = imagenes[imagenesRandom[23]][1];
+                        card24.setImageResource(imagenes[imagenesRandom[23]][0]);
                         presionados[23] = 1; //se abre carta
-                        setAuxCard(12,23);  //img#, presionados[#]
+                        setAuxCard(id,23);  //img#, presionados[#]
                         openCard ++;
                         if(flip()){ //si ya hay 2 cartas volteadas
-                            if(isPar()){    //checamos si son pares las cartas abiertas
-                                Toast t = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
-                                t.show();
-                            }
+                            isPar();    //checamos si son pares las cartas abiertas
                         }
                     }
                 }
@@ -702,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println(" msg setaux c1[0] "+c1[0] + " c2[0] "+c2[0]);
     }
 
-    public boolean isPar(){
+    public void isPar(){
         System.out.println(" msg ispar c1[0] "+c1[0] + " c2[0] "+c2[0]);
         openCard = 0;
         if(c1[0] == c2[0]){
@@ -711,16 +664,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             c2[0] = 0;
             presionados[c1[1]] = 2;
             presionados[c2[1]] = 2;
+            Toast tPar = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
+            tPar.show();
             if(pares == 12){
-                Toast t = Toast.makeText(getApplicationContext(),"¡Felicidades!",Toast.LENGTH_LONG);
-                t.show();
+                Toast tFin = Toast.makeText(getApplicationContext(),"¡Felicidades!",Toast.LENGTH_LONG);
+                tFin.show();
             }
             txPares.setText(String.valueOf(pares));
-            return true;
         }
         else {
-            Toast t = Toast.makeText(getApplicationContext(),"Sigue intentando",Toast.LENGTH_LONG);
-            t.show();
+            Toast tNo = Toast.makeText(getApplicationContext(),"Sigue intentando",Toast.LENGTH_LONG);
+            tNo.show();
             Runnable r = new Runnable() {
                 @Override
                 public void run(){
@@ -736,7 +690,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             c1[0] = 0;
             c2[0] = 0;
         }
-        return false;
     }
 
     public void voltear(int id){
@@ -822,23 +775,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void randomImages(){
-        int cant=12;
-        int i=0;
-        int rang=10;
-        int vec[]= new int [cant];
-
-        vec[i]=(int) (Math.random()*rang);
-        for(i=1; i<cant; i++){
-            vec[i]=(int)(Math.random()*rang);
-            for(int j=1; j<i; j++){
-                if(vec[i]==vec[j]){
-                    i--;
-                }
-            }
+        List<Integer> lista = Collections.synchronizedList(new LinkedList<Integer>());
+        for(int a=0;a<24;a++){
+            lista.add(a+1);
         }
-        System.out.println("        msg Numeros Random \n");
-        for(int a=0;a<cant;a++){
-            System.out.print(vec[a]+" / ");
+
+        Collections.shuffle(lista);
+
+        System.out.println("        rand Numeros Random ");
+        for(int a=0;a<24;a++){
+            imagenesRandom[a] = lista.get(a);
+            System.out.println("  rand "+lista.get(a)+" / ");
         }
     }
 
@@ -850,14 +797,68 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         c2 = new int[2];
         c1[0] = 0;
         c2[0] = 0;
+        id = 0;
+        imagenesRandom = new int[24];
+        imagenes = new int[24][2];
 
         for (int a=0;a<24;a++){
-            int b = a;
             presionados[a] = 3;
         }
 
-        //randomImages();
+        randomImages();
         txPares.setText("0");
+
+        imagenes[0][0] = R.drawable.dino1;
+        imagenes[1][0] = R.drawable.dino2;
+        imagenes[2][0] = R.drawable.dino3;
+        imagenes[3][0] = R.drawable.dino4;
+        imagenes[4][0] = R.drawable.dino5;
+        imagenes[5][0] = R.drawable.dino6;
+        imagenes[6][0] = R.drawable.dino7;
+        imagenes[7][0] = R.drawable.dino8;
+        imagenes[8][0] = R.drawable.dino9;
+        imagenes[9][0] = R.drawable.dino10;
+        imagenes[10][0] = R.drawable.dino11;
+        imagenes[11][0] = R.drawable.dino12;
+        imagenes[12][0] = R.drawable.dino1;
+        imagenes[13][0] = R.drawable.dino2;
+        imagenes[14][0] = R.drawable.dino3;
+        imagenes[15][0] = R.drawable.dino4;
+        imagenes[16][0] = R.drawable.dino5;
+        imagenes[17][0] = R.drawable.dino6;
+        imagenes[18][0] = R.drawable.dino7;
+        imagenes[19][0] = R.drawable.dino8;
+        imagenes[20][0] = R.drawable.dino9;
+        imagenes[21][0] = R.drawable.dino10;
+        imagenes[22][0] = R.drawable.dino11;
+        imagenes[23][0] = R.drawable.dino12;
+
+            //ID
+        imagenes[0][1] = 1;
+        imagenes[1][1] = 2;
+        imagenes[2][1] = 3;
+        imagenes[3][1] = 4;
+        imagenes[4][1] = 5;
+        imagenes[5][1] = 6;
+        imagenes[6][1] = 7;
+        imagenes[7][1] = 8;
+        imagenes[8][1] = 9;
+        imagenes[9][1] = 10;
+        imagenes[10][1] = 11;
+        imagenes[11][1] = 12;
+        imagenes[12][1] = 1;
+        imagenes[13][1] = 2;
+        imagenes[14][1] = 3;
+        imagenes[15][1] = 4;
+        imagenes[16][1] = 5;
+        imagenes[17][1] = 6;
+        imagenes[18][1] = 7;
+        imagenes[19][1] = 8;
+        imagenes[20][1] = 9;
+        imagenes[21][1] = 10;
+        imagenes[22][1] = 11;
+        imagenes[23][1] = 12;
+
 
         card1.setImageResource(R.drawable.imgdefault);
         card2.setImageResource(R.drawable.imgdefault);

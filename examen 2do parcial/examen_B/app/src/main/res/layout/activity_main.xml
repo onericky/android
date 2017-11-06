@@ -2,20 +2,20 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:stretchColumns="*">
+    android:stretchColumns="*"
+    android:background="@drawable/frame">
 
     <TableRow>
         <Button
             android:id="@+id/bt_again"
             android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_again" />
-        <TextView
+            android:layout_height="70dp"
+            android:background="@drawable/again"/>
+        <Button
             android:layout_span="2"
-            android:text="@string/tx_again"
-            android:textColor="@color/colorTitulo"
-            android:textAlignment="center"
-            android:textSize="30dp"/>
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:background="@drawable/title"/>
         <TextView
             android:id="@+id/total_pares"
             android:text="@string/num_pares"
@@ -27,156 +27,156 @@
     <TableRow>
         <ImageView
             android:id="@+id/btn1"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn2"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn3"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn4"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
     </TableRow>
 
     <TableRow>
         <ImageView
             android:id="@+id/btn5"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn6"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn7"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn8"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
     </TableRow>
 
     <TableRow>
         <ImageView
             android:id="@+id/btn9"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn10"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn11"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn12"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
     </TableRow>
 
     <TableRow>
         <ImageView
             android:id="@+id/btn13"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn14"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn15"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn16"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
     </TableRow>
 
     <TableRow>
         <ImageView
             android:id="@+id/btn17"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn18"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn19"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn20"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
     </TableRow>
 
     <TableRow>
         <ImageView
             android:id="@+id/btn21"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn22"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn23"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
 
         <ImageView
             android:id="@+id/btn24"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="73dp"
+            android:layout_height="73dp"
             android:src="@drawable/imgdefault" />
     </TableRow>
 
