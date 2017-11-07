@@ -15,6 +15,15 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:background="@drawable/play"/>
 
+     <EditText
+         android:id="@+id/editNombre"
+         android:layout_width="150dp"
+         android:layout_height="50dp"
+         android:textSize="20sp"
+         android:hint="Tu nombre"
+         android:textAlignment="center"
+         android:textColor="@color/colorNumerosPares"/>
+
 </LinearLayout>
 
 

@@ -4,4 +4,5 @@
     <string name="bt_again">Jugar de nuevo</string>
     <string name="tx_again">Memoritas</string>
     <string name="num_pares">0</string>
+    <string name="nombreHint">Tu nombre</string>
 </resources>

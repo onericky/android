@@ -1,9 +1,11 @@
 package castro.examen_b;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,12 +23,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int[] presionados,c1, c2, imagenesRandom;
     int[][] imagenes;
     int pares, openCard, id;
+    String nombreJugador;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if(extras != null){
+            nombreJugador = extras.getString("Nombre");
+        }
+
 
         txPares = (TextView) findViewById(R.id.total_pares);
 
@@ -116,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 1 en dafult");
                         card1.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[0] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[0] == 3 || presionados[0] == 0){ //se puede voltear carta, esta cerrada
@@ -138,6 +150,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 2 en dafult");
                         card2.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[1] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[1] == 3 || presionados[1] == 0){ //se puede voltear carta, esta cerrada
@@ -160,6 +174,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 3 en default");
                         card3.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[2] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[2] == 3 || presionados[2] == 0){ //se puede voltear carta, esta cerrada
@@ -182,6 +198,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 4 en default");
                         card4.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[3] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[3] == 3 || presionados[3] == 0){ //se puede voltear carta, esta cerrada
@@ -204,6 +222,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 5 en default");
                         card5.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[4] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[4] == 3 || presionados[4] == 0){ //se puede voltear carta, esta cerrada
@@ -226,6 +246,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 6 en default");
                         card6.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[5] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[5] == 3 || presionados[5] == 0){ //se puede voltear carta, esta cerrada
@@ -248,6 +270,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 7 en default");
                         card7.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[6] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[6] == 3 || presionados[6] == 0){ //se puede voltear carta, esta cerrada
@@ -270,6 +294,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 8 en default");
                         card8.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[7] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[7] == 3 || presionados[7] == 0){ //se puede voltear carta, esta cerrada
@@ -292,6 +318,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 9 en default");
                         card9.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[8] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[8] == 3 || presionados[8] == 0){ //se puede voltear carta, esta cerrada
@@ -314,6 +342,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 10 en default");
                         card10.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[9] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[9] == 3 || presionados[9] == 0){ //se puede voltear carta, esta cerrada
@@ -336,6 +366,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 11 en default");
                         card11.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[10] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[10] == 3 || presionados[10] == 0){ //se puede voltear carta, esta cerrada
@@ -358,6 +390,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 12 en default");
                         card12.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[11] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[11] == 3 || presionados[11] == 0){ //se puede voltear carta, esta cerrada
@@ -380,6 +414,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 13 en default");
                         card13.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[12] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[12] == 3 || presionados[12] == 0){ //se puede voltear carta, esta cerrada
@@ -402,6 +438,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 14 en default");
                         card14.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[13] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[13] == 3 || presionados[13] == 0){ //se puede voltear carta, esta cerrada
@@ -424,6 +462,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 15 en default");
                         card15.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[14] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[14] == 3 || presionados[14] == 0){ //se puede voltear carta, esta cerrada
@@ -446,6 +486,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 16 en default");
                         card16.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[15] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[15] == 3 || presionados[15] == 0){ //se puede voltear carta, esta cerrada
@@ -468,6 +510,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 17 en default");
                         card17.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[16] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[16] == 3 || presionados[16] == 0){ //se puede voltear carta, esta cerrada
@@ -490,6 +534,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 18 en default");
                         card18.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[17] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[17] == 3 || presionados[17] == 0){ //se puede voltear carta, esta cerrada
@@ -512,6 +558,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 19 en default");
                         card19.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[18] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[18] == 3 || presionados[18] == 0){ //se puede voltear carta, esta cerrada
@@ -534,6 +582,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 20 en default");
                         card20.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[19] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[19] == 3 || presionados[19] == 0){ //se puede voltear carta, esta cerrada
@@ -556,6 +606,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 21 en default");
                         card21.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[20] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[20] == 3 || presionados[20] == 0){ //se puede voltear carta, esta cerrada
@@ -578,6 +630,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 22 en default");
                         card22.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[21] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[21] == 3 || presionados[21] == 0){ //se puede voltear carta, esta cerrada
@@ -600,6 +654,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 23 en default");
                         card23.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[22] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[22] == 3 || presionados[22] == 0){ //se puede voltear carta, esta cerrada
@@ -622,6 +678,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         System.out.println(" msg volteo carta 24 en default");
                         card24.setImageResource(R.drawable.imgdefault);  //poner carta en default
                         presionados[23] = 0; //se cierra carta
+                        c1[0] = 0;
+                        c2[0] = 0;
                         if(openCard == 0) openCard = 0;
                         else openCard --;
                     }else if(presionados[23] == 3 || presionados[23] == 0){ //se puede voltear carta, esta cerrada
@@ -657,23 +715,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void isPar(){
         System.out.println(" msg ispar c1[0] "+c1[0] + " c2[0] "+c2[0]);
-        openCard = 0;
         if(c1[0] == c2[0]){
             pares ++;
-            c1[0] = 0;
-            c2[0] = 0;
             presionados[c1[1]] = 2;
             presionados[c2[1]] = 2;
-            Toast tPar = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_LONG);
+            Toast tPar = Toast.makeText(getApplicationContext(),"Encontraste un par!",Toast.LENGTH_SHORT);
             tPar.show();
             if(pares == 12){
-                Toast tFin = Toast.makeText(getApplicationContext(),"¡Felicidades!",Toast.LENGTH_LONG);
+                Toast tFin = Toast.makeText(getApplicationContext(),"¡Felicidades "+nombreJugador+"!",Toast.LENGTH_LONG);
                 tFin.show();
             }
             txPares.setText(String.valueOf(pares));
         }
         else {
-            Toast tNo = Toast.makeText(getApplicationContext(),"Sigue intentando",Toast.LENGTH_LONG);
+            Toast tNo = Toast.makeText(getApplicationContext(),"Sigue intentando",Toast.LENGTH_SHORT);
             tNo.show();
             Runnable r = new Runnable() {
                 @Override
@@ -684,12 +739,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             };
             Handler h = new Handler();
-            h.postDelayed(r, 1500);
+            h.postDelayed(r, 700);
             presionados[c1[1]] = 0;
             presionados[c2[1]] = 0;
-            c1[0] = 0;
-            c2[0] = 0;
         }
+        c1[0] = 0;
+        c2[0] = 0;
+        openCard = 0;
     }
 
     public void voltear(int id){
@@ -795,8 +851,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         openCard = 0;
         c1 = new int[2];
         c2 = new int[2];
-        c1[0] = 0;
-        c2[0] = 0;
         id = 0;
         imagenesRandom = new int[24];
         imagenes = new int[24][2];
@@ -808,6 +862,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         randomImages();
         txPares.setText("0");
 
+                //ruta imagenes
         imagenes[0][0] = R.drawable.dino1;
         imagenes[1][0] = R.drawable.dino2;
         imagenes[2][0] = R.drawable.dino3;
@@ -858,7 +913,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         imagenes[21][1] = 10;
         imagenes[22][1] = 11;
         imagenes[23][1] = 12;
-
 
         card1.setImageResource(R.drawable.imgdefault);
         card2.setImageResource(R.drawable.imgdefault);
